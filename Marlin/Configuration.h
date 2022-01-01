@@ -90,7 +90,7 @@
  */
 
 // Show the Marlin bootscreen on startup. ** ENABLE FOR PRODUCTION **
-#define SHOW_BOOTSCREEN
+//#define SHOW_BOOTSCREEN
 
 // Show the bitmap in Marlin/_Bootscreen.h on startup.
 //#define SHOW_CUSTOM_BOOTSCREEN
@@ -608,9 +608,9 @@
     #define DEFAULT_Kd_LIST { 43.21, 43.21 }
   #else
 	//Bluer
-    #define DEFAULT_Kp 16.2773
-    #define DEFAULT_Ki 1.2380
-    #define DEFAULT_Kd 53.5055
+    #define DEFAULT_Kp 16.8849
+    #define DEFAULT_Ki 1.3109
+    #define DEFAULT_Kd 54.3695
   #endif
 #endif // PIDTEMP
 
@@ -650,9 +650,9 @@
   // 120V 250W silicone heater into 4mm borosilicate (MendelMax 1.5+)
   // from FOPDT model - kp=.39 Tp=405 Tdead=66, Tc set to 79.2, aggressive factor of .15 (vs .1, 1, 10)
   // Bluer PID Settings
-  #define DEFAULT_bedKp 30.1057
-  #define DEFAULT_bedKi 5.8674
-  #define DEFAULT_bedKd 102.9817
+  #define DEFAULT_bedKp 34.2975
+  #define DEFAULT_bedKi 6.1246
+  #define DEFAULT_bedKd 128.0441
 
   // FIND YOUR OWN: "M303 E-1 C8 S90" to run autotune on the bed at 90 degreesC for 8 cycles.
 #endif // PIDTEMPBED
@@ -1639,7 +1639,7 @@
   /**
    * Enable the G26 Mesh Validation Pattern tool.
    */
-  //#define G26_MESH_VALIDATION
+  #define G26_MESH_VALIDATION
   #if ENABLED(G26_MESH_VALIDATION)
     #define MESH_TEST_NOZZLE_SIZE    0.4  // (mm) Diameter of primary nozzle.
     #define MESH_TEST_LAYER_HEIGHT   0.2  // (mm) Default layer height for G26.
@@ -2854,11 +2854,11 @@
 
   #define TOUCH_SCREEN_CALIBRATION
 
-  #define XPT2046_X_CALIBRATION 17880
-  #define XPT2046_Y_CALIBRATION -12234
-  #define XPT2046_X_OFFSET        -45
-  #define XPT2046_Y_OFFSET        349
-  //#define TOUCH_ORIENTATION TOUCH_LANDSCAPE
+  #define XPT2046_X_CALIBRATION 16877
+  #define XPT2046_Y_CALIBRATION -10936
+  #define XPT2046_X_OFFSET        -27
+  #define XPT2046_Y_OFFSET        326
+  #define TOUCH_ORIENTATION TOUCH_LANDSCAPE
 
   #if BOTH(TOUCH_SCREEN_CALIBRATION, EEPROM_SETTINGS)
     #define TOUCH_CALIBRATION_AUTO_SAVE // Auto save successful calibration values to EEPROM
