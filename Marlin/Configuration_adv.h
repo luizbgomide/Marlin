@@ -1372,10 +1372,10 @@
   //#define STATUS_MESSAGE_SCROLLING
 
   // On the Info Screen, display XY with one decimal place when possible
-  //#define LCD_DECIMAL_SMALL_XY
+  #define LCD_DECIMAL_SMALL_XY
 
   // Add an 'M73' G-code to set the current percentage
-  //#define LCD_SET_PROGRESS_MANUALLY
+  #define LCD_SET_PROGRESS_MANUALLY
 
   // Show the E position (filament used) during printing
   //#define LCD_SHOW_E_TOTAL
@@ -1997,7 +1997,7 @@
 #define LIN_ADVANCE
 #if ENABLED(LIN_ADVANCE)
   //#define EXTRA_LIN_ADVANCE_K // Enable for second linear advance constants
-  #define LIN_ADVANCE_K 0.00    // Unit: mm compression per 1mm/s extruder speed
+  #define LIN_ADVANCE_K 0.61    // Unit: mm compression per 1mm/s extruder speed
   //#define LA_DEBUG            // If enabled, this will generate debug information output over USB.
   #define EXPERIMENTAL_SCURVE // Enable this option to permit S-Curve Acceleration
   //#define ALLOW_LOW_EJERK     // Allow a DEFAULT_EJERK value of <10. Recommended for direct drive hotends.
@@ -4339,3 +4339,37 @@
 
 // Report uncleaned reset reason from register r2 instead of MCUSR. Supported by Optiboot on AVR.
 //#define OPTIBOOT_RESET_REASON
+
+// ---------------------
+// EXTRAS FOR MODDED PRINTERS
+// ---------------------
+
+// 
+// TFT_COLOR_UI: Custom Colors
+//
+
+//#define KAKAROTO_COLORS
+#ifdef KAKAROTO_COLORS
+  #define COLOR_BACKGROUND        COLOR_BLACK
+  #define COLOR_SELECTION_BG      COLOR_DARKGREY2
+  #define COLOR_AXIS_HOMED        COLOR_AQUA
+  #define COLOR_AXIS_NOT_HOMED    COLOR_SCARLET
+  #define COLOR_RATE_100          COLOR_AQUA
+  #define COLOR_PROGRESS_FRAME    COLOR_AQUA
+  #define COLOR_PROGRESS_BAR      COLOR_AQUA
+  #define COLOR_STATUS_MESSAGE    COLOR_SCARLET
+  #define COLOR_CONTROL_ENABLED   COLOR_AQUA
+  #define COLOR_CONTROL_DISABLED  COLOR_SCARLET
+  #define COLOR_MENU_TEXT         COLOR_AQUA
+  #define COLOR_MENU_VALUE        COLOR_AQUA
+  #define COLOR_SLIDER            COLOR_AQUA
+  #define COLOR_UBL               COLOR_AQUA
+  #define COLOR_TOUCH_CALIBRATION COLOR_AQUA
+  #define COLOR_KILL_SCREEN_TEXT  COLOR_AQUA
+#else
+  #define COLOR_BACKGROUND    COLOR_DARKGREY2
+  #define COLOR_SELECTION_BG  COLOR_BLACK
+  #define COLOR_MENU_TEXT     COLOR_LIGHT_BLUE
+  #define COLOR_MENU_VALUE    COLOR_YELLOW
+  #define COLOR_PROGRESS_BAR  COLOR_VIVID_GREEN
+#endif

@@ -608,9 +608,9 @@
     #define DEFAULT_Kd_LIST { 43.21, 43.21 }
   #else
 	//Bluer
-    #define DEFAULT_Kp 16.8849
-    #define DEFAULT_Ki 1.3109
-    #define DEFAULT_Kd 54.3695
+    #define DEFAULT_Kp 12.5035
+    #define DEFAULT_Ki 0.7550
+    #define DEFAULT_Kd 51.7646
   #endif
 #endif // PIDTEMP
 
@@ -650,9 +650,9 @@
   // 120V 250W silicone heater into 4mm borosilicate (MendelMax 1.5+)
   // from FOPDT model - kp=.39 Tp=405 Tdead=66, Tc set to 79.2, aggressive factor of .15 (vs .1, 1, 10)
   // Bluer PID Settings
-  #define DEFAULT_bedKp 34.2975
-  #define DEFAULT_bedKi 6.1246
-  #define DEFAULT_bedKd 128.0441
+  #define DEFAULT_bedKp 29.2230
+  #define DEFAULT_bedKi 5.2926
+  #define DEFAULT_bedKd 107.5700
 
   // FIND YOUR OWN: "M303 E-1 C8 S90" to run autotune on the bed at 90 degreesC for 8 cycles.
 #endif // PIDTEMPBED
@@ -1597,8 +1597,8 @@
  * these options to restore the prior leveling state or to always enable
  * leveling immediately after G28.
  */
-#define RESTORE_LEVELING_AFTER_G28
-//#define ENABLE_LEVELING_AFTER_G28
+//#define RESTORE_LEVELING_AFTER_G28
+#define ENABLE_LEVELING_AFTER_G28
 
 /**
  * Auto-leveling needs preheating
