@@ -25,7 +25,7 @@
 
 //#define BLUER_TMC2209    // Enable for the TMC2209 driver version
 //#define BLUER_INVERTED_E // Enable if the extruder runs the wrong way
-//#define BLUER_BLTOUCH // Enable if you want to use BLTOUCH
+#define BLUER_BLTOUCH // Enable if you want to use BLTOUCH
 
 /**
  * Configuration.h
@@ -75,7 +75,7 @@
 // @section info
 
 // Author info of this build printed to the host during boot and M115
-#define STRING_CONFIG_H_AUTHOR "(ils15, Bluer)" // Who made the changes.
+#define STRING_CONFIG_H_AUTHOR "(ils15 & luizbgomide, Bluer)" // Who made the changes.
 //#define CUSTOM_VERSION_FILE Version.h // Path from the root directory (no quotes)
 
 /**
@@ -608,9 +608,9 @@
     #define DEFAULT_Kd_LIST { 43.21, 43.21 }
   #else
 	//Bluer
-    #define DEFAULT_Kp 12.5035
-    #define DEFAULT_Ki 0.7550
-    #define DEFAULT_Kd 51.7646
+    #define DEFAULT_Kp 15.1261
+    #define DEFAULT_Ki 1.0111
+    #define DEFAULT_Kd 56.5715
   #endif
 #endif // PIDTEMP
 
@@ -650,9 +650,9 @@
   // 120V 250W silicone heater into 4mm borosilicate (MendelMax 1.5+)
   // from FOPDT model - kp=.39 Tp=405 Tdead=66, Tc set to 79.2, aggressive factor of .15 (vs .1, 1, 10)
   // Bluer PID Settings
-  #define DEFAULT_bedKp 29.2230
-  #define DEFAULT_bedKi 5.2926
-  #define DEFAULT_bedKd 107.5700
+  #define DEFAULT_bedKp 27.9720
+  #define DEFAULT_bedKi 4.0190
+  #define DEFAULT_bedKd 129.7902
 
   // FIND YOUR OWN: "M303 E-1 C8 S90" to run autotune on the bed at 90 degreesC for 8 cycles.
 #endif // PIDTEMPBED
@@ -840,7 +840,7 @@
 // Mechanical endstop with COM to ground and NC to Signal uses "false" here (most common setup).
 #define X_MIN_ENDSTOP_INVERTING true // Set to true to invert the logic of the endstop.
 #define Y_MIN_ENDSTOP_INVERTING true // Set to true to invert the logic of the endstop.
-#define Z_MIN_ENDSTOP_INVERTING true // Set to true to invert the logic of the endstop.
+//#define Z_MIN_ENDSTOP_INVERTING true // Set to true to invert the logic of the endstop.
 #define I_MIN_ENDSTOP_INVERTING true // Set to true to invert the logic of the endstop.
 #define J_MIN_ENDSTOP_INVERTING true // Set to true to invert the logic of the endstop.
 #define K_MIN_ENDSTOP_INVERTING true // Set to true to invert the logic of the endstop.
@@ -850,7 +850,16 @@
 #define I_MAX_ENDSTOP_INVERTING true // Set to true to invert the logic of the endstop.
 #define J_MAX_ENDSTOP_INVERTING true // Set to true to invert the logic of the endstop.
 #define K_MAX_ENDSTOP_INVERTING true // Set to true to invert the logic of the endstop.
-#define Z_MIN_PROBE_ENDSTOP_INVERTING true // Set to true to invert the logic of the probe.
+//#define Z_MIN_PROBE_ENDSTOP_INVERTING true // Set to true to invert the logic of the probe.
+
+#if ENABLED(BLUER_BLTOUCH)
+  #define Z_MIN_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
+  #define Z_MIN_PROBE_ENDSTOP_INVERTING false // Set to true to invert the logic of the probe.
+#else
+  #define Z_MIN_ENDSTOP_INVERTING true // Set to true to invert the logic of the endstop.
+  #define Z_MIN_PROBE_ENDSTOP_INVERTING true // Set to true to invert the logic of the probe.
+#endif
+
 
 /**
  * Stepper Drivers
@@ -950,7 +959,7 @@
  *                                      X, Y, Z [, I [, J [, K]]], E0 [, E1[, E2...]]
  */
 //#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80.3, 80.3, 400, 412 }     //Bluer V1 
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 160.6, 160.6, 400, 412 }    //Bluer V2  2xTMC2225	
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 160.6, 160.6, 400, 410 }    //Bluer V2  2xTMC2225	
 //#define DEFAULT_AXIS_STEPS_PER_UNIT   { 160.6, 160.6, 800, 824 }	 //Bluer 4xTMC2225																											   
 /**
  * Default Max Feed Rate (mm/s)
@@ -970,7 +979,7 @@
  * Override with M201
  *                                      X, Y, Z [, I [, J [, K]]], E0 [, E1[, E2...]]
  */
-#define DEFAULT_MAX_ACCELERATION      { 1000, 1000, 100, 1000 }
+#define DEFAULT_MAX_ACCELERATION      { 3000, 3000, 100, 1000 }
 
 //#define LIMITED_MAX_ACCEL_EDITING     // Limit edit via M201 or LCD to DEFAULT_MAX_ACCELERATION * 2
 #if ENABLED(LIMITED_MAX_ACCEL_EDITING)
@@ -985,9 +994,9 @@
  *   M204 R    Retract Acceleration
  *   M204 T    Travel Acceleration
  */
-#define DEFAULT_ACCELERATION          600    // X, Y, Z and E acceleration for printing moves
+#define DEFAULT_ACCELERATION          1500    // X, Y, Z and E acceleration for printing moves
 #define DEFAULT_RETRACT_ACCELERATION  500    // E acceleration for retracts
-#define DEFAULT_TRAVEL_ACCELERATION   1000    // X, Y, Z acceleration for travel (non printing) moves
+#define DEFAULT_TRAVEL_ACCELERATION   2000    // X, Y, Z acceleration for travel (non printing) moves
 
 /**
  * Default Jerk limits (mm/s)
@@ -999,8 +1008,8 @@
  */
 #define CLASSIC_JERK
 #if ENABLED(CLASSIC_JERK)
-  #define DEFAULT_XJERK 11.0
-  #define DEFAULT_YJERK 11.0
+  #define DEFAULT_XJERK 10.0
+  #define DEFAULT_YJERK 10.0
   #define DEFAULT_ZJERK  0.3
   //#define DEFAULT_IJERK  0.3
   //#define DEFAULT_JJERK  0.3
@@ -1089,7 +1098,9 @@
  * Use G29 repeatedly, adjusting the Z height at each point with movement commands
  * or (with LCD_BED_LEVELING) the LCD controller.
  */
-#define PROBE_MANUALLY
+#if DISABLED(BLUER_BLTOUCH)
+  #define PROBE_MANUALLY
+#endif
 
 /**
  * A Fix-Mounted Probe either doesn't deploy or needs manual deployment.
@@ -1206,7 +1217,7 @@
  *     |    [-]    |
  *     O-- FRONT --+
  */
-#define NOZZLE_TO_PROBE_OFFSET { 0, 0, 0 }
+#define NOZZLE_TO_PROBE_OFFSET { 43, -4, 0 }
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
@@ -1216,7 +1227,7 @@
 #define XY_PROBE_FEEDRATE (167*60)
 
 // Feedrate (mm/min) for the first approach when double-probing (MULTIPLE_PROBING == 2)
-#define Z_PROBE_FEEDRATE_FAST (4*60)
+#define Z_PROBE_FEEDRATE_FAST (10*60)
 
 // Feedrate (mm/min) for the "accurate" probe of each point
 #define Z_PROBE_FEEDRATE_SLOW (Z_PROBE_FEEDRATE_FAST / 2)
@@ -1266,8 +1277,8 @@
  * A total of 2 does fast/slow probes with a weighted average.
  * A total of 3 or more adds more slow probes, taking the average.
  */
-#define MULTIPLE_PROBING 2
-//#define EXTRA_PROBING    1
+#define MULTIPLE_PROBING 3
+#define EXTRA_PROBING    1
 
 /**
  * Z probes require clearance when deploying, stowing, and moving between
@@ -1655,7 +1666,7 @@
 #if EITHER(AUTO_BED_LEVELING_LINEAR, AUTO_BED_LEVELING_BILINEAR)
 
   // Set the number of grid points per dimension.
-  #define GRID_MAX_POINTS_X 3
+  #define GRID_MAX_POINTS_X 5
   #define GRID_MAX_POINTS_Y GRID_MAX_POINTS_X
 
   // Probe along the Y axis, advancing X after each column
