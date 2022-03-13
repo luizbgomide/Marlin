@@ -24,6 +24,7 @@
 #define CONFIG_EXAMPLES_DIR "Two Trees/BlueR/BlueR V2"
 
 //#define BLUER_TMC2209    // Enable for the TMC2209 driver version
+#define BLUER_TMC2209_UART
 //#define BLUER_INVERTED_E // Enable if the extruder runs the wrong way
 #define BLUER_BLTOUCH // Enable if you want to use BLTOUCH
 
@@ -883,6 +884,10 @@
   #define X_DRIVER_TYPE TMC2209_STANDALONE
   #define Y_DRIVER_TYPE TMC2209_STANDALONE
   #define Z_DRIVER_TYPE TMC2209_STANDALONE
+#elif ENABLED(BLUER_TMC2209_UART)
+  #define X_DRIVER_TYPE TMC2209
+  #define Y_DRIVER_TYPE TMC2209
+  #define Z_DRIVER_TYPE TMC2209
 #else
   #define X_DRIVER_TYPE TMC2208_STANDALONE
   #define Y_DRIVER_TYPE TMC2208_STANDALONE
@@ -898,6 +903,8 @@
 //#define J_DRIVER_TYPE  A4988
 //#define K_DRIVER_TYPE  A4988
   #define E0_DRIVER_TYPE TMC2209_STANDALONE
+#elif ENABLED(BLUER_TMC2209_UART)
+  #define E0_DRIVER_TYPE TMC2209
 #else
 //#define I_DRIVER_TYPE  A4988
 //#define J_DRIVER_TYPE  A4988
@@ -959,8 +966,8 @@
  *                                      X, Y, Z [, I [, J [, K]]], E0 [, E1[, E2...]]
  */
 //#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80.3, 80.3, 400, 412 }     //Bluer V1 
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 160.6, 160.6, 400, 410 }    //Bluer V2  2xTMC2225	
-//#define DEFAULT_AXIS_STEPS_PER_UNIT   { 160.6, 160.6, 800, 824 }	 //Bluer 4xTMC2225																											   
+//#define DEFAULT_AXIS_STEPS_PER_UNIT   { 160.6, 160.6, 400, 410 }    //Bluer V2  2xTMC2225	
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 160.6, 160.6, 800, 820 }	 //Bluer 4xTMC2225																											   
 /**
  * Default Max Feed Rate (mm/s)
  * Override with M203
@@ -1370,7 +1377,7 @@
 // Invert the stepper direction. Change (or reverse the motor connector) if an axis goes the wrong way.
 #define INVERT_X_DIR false
 #define INVERT_Y_DIR false
-#if ENABLED(BLUER_TMC2209)
+#if ANY(BLUER_TMC2209, BLUER_TMC2209_UART)
   #define INVERT_Z_DIR false
 #else
   #define INVERT_Z_DIR true
@@ -1383,7 +1390,7 @@
 
 // For direct drive extruder v9 set to true, for geared extruder set to false.
 #ifdef BLUER_INVERTED_E
-  #if ENABLED(BLUER_TMC2209)
+  #if ANY(BLUER_TMC2209, BLUER_TMC2209_UART)
     #define INVERT_E0_DIR false
   #else
     #define INVERT_E0_DIR true
