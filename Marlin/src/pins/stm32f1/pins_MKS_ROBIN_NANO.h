@@ -46,6 +46,10 @@
 
 #include "pins_MKS_ROBIN_NANO_common.h"
 
+#if HAS_TFT_LVGL_UI && FAN1_PIN != PB0 && HEATER_1_PIN != PB0
+  #define BOARD_INIT OUT_WRITE(PB0, LOW)
+#endif
+
 #if HAS_TMC_UART
 
   #define X_SERIAL_TX_PIN   PA10
@@ -63,3 +67,4 @@
   // Reduce baud rate to improve software serial reliability
   #define TMC_BAUD_RATE                    19200
 #endif // HAS_TMC_UART
+
