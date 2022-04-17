@@ -25,7 +25,7 @@
 
 //#define BLUER_TMC2209    // Enable for the TMC2209 driver version
 #define BLUER_TMC2209_UART
-//#define BLUER_INVERTED_E // Enable if the extruder runs the wrong way
+#define BLUER_INVERTED_E // Enable if the extruder runs the wrong way
 #define BLUER_BLTOUCH // Enable if you want to use BLTOUCH
 
 /**
