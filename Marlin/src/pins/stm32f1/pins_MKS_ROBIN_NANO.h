@@ -49,3 +49,22 @@
 #if HAS_TFT_LVGL_UI && FAN1_PIN != PB0 && HEATER_1_PIN != PB0
   #define BOARD_INIT() OUT_WRITE(PB0, LOW)
 #endif
+
+#if HAS_TMC_UART
+
+  #define X_SERIAL_TX_PIN   PA10
+  #define X_SERIAL_RX_PIN   X_SERIAL_TX_PIN
+
+  #define Y_SERIAL_TX_PIN   PA9
+  #define Y_SERIAL_RX_PIN   Y_SERIAL_TX_PIN
+
+  #define Z_SERIAL_TX_PIN   PC7
+  #define Z_SERIAL_RX_PIN   Z_SERIAL_TX_PIN
+
+  #define E0_SERIAL_TX_PIN  PC13
+  #define E0_SERIAL_RX_PIN  E0_SERIAL_TX_PIN
+
+  // Reduce baud rate to improve software serial reliability
+  #define TMC_BAUD_RATE                    19200
+#endif // HAS_TMC_UART
+
