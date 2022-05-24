@@ -3870,22 +3870,22 @@
 #define CUSTOM_MENU_MAIN
 #if ENABLED(CUSTOM_MENU_MAIN)
   #define CUSTOM_MENU_MAIN_TITLE "Octoprint"
-  #define CUSTOM_MENU_MAIN_SCRIPT_DONE "M117 Command Sent..."
+  #define CUSTOM_MENU_MAIN_SCRIPT_DONE "M117 Octoprint Command"
   #define CUSTOM_MENU_MAIN_SCRIPT_AUDIBLE_FEEDBACK
-  //#define CUSTOM_MENU_MAIN_SCRIPT_RETURN   // Return to status screen after a script
+  #define CUSTOM_MENU_MAIN_SCRIPT_RETURN   // Return to status screen after a script
   //#define CUSTOM_MENU_MAIN_ONLY_IDLE         // Only show custom menu when the machine is idle
 
-  #define MAIN_MENU_ITEM_1_DESC "Pause Print"
-  #define MAIN_MENU_ITEM_1_GCODE "M118 A1 action:pause"
-  //#define MAIN_MENU_ITEM_1_CONFIRM          // Show a confirmation dialog before this action
+  #define MAIN_MENU_ITEM_1_DESC "Start Print"
+  #define MAIN_MENU_ITEM_1_GCODE "M118 A1 action:start"
+  #define MAIN_MENU_ITEM_1_CONFIRM          // Show a confirmation dialog before this action
 
-  #define MAIN_MENU_ITEM_2_DESC "Resume Print"
-  #define MAIN_MENU_ITEM_2_GCODE "M118 A1 action:resume"
-  #define MAIN_MENU_ITEM_2_CONFIRM
+  #define MAIN_MENU_ITEM_2_DESC "Pause Print"
+  #define MAIN_MENU_ITEM_2_GCODE "M118 A1 action:pause"
+  // #define MAIN_MENU_ITEM_2_CONFIRM
 
-  // #define MAIN_MENU_ITEM_3_DESC "Resume Print"
-  // #define MAIN_MENU_ITEM_3_GCODE "M118 A1 action:resume"
-  // #define MAIN_MENU_ITEM_3_CONFIRM
+  #define MAIN_MENU_ITEM_3_DESC "Resume Print"
+  #define MAIN_MENU_ITEM_3_GCODE "M118 A1 action:resume"
+  #define MAIN_MENU_ITEM_3_CONFIRM
 
   #define MAIN_MENU_ITEM_4_DESC "Restart Printer"
   #define MAIN_MENU_ITEM_4_GCODE "M997"
@@ -3900,7 +3900,7 @@
 #define CUSTOM_MENU_CONFIG
 #if ENABLED(CUSTOM_MENU_CONFIG)
   #define CUSTOM_MENU_CONFIG_TITLE "Enclosure"
-  #define CUSTOM_MENU_CONFIG_SCRIPT_DONE "M117 Command Sent..."
+  #define CUSTOM_MENU_CONFIG_SCRIPT_DONE "M117 Enclosure Command"
   #define CUSTOM_MENU_CONFIG_SCRIPT_AUDIBLE_FEEDBACK
   //#define CUSTOM_MENU_CONFIG_SCRIPT_RETURN  // Return to status screen after a script
   //#define CUSTOM_MENU_CONFIG_ONLY_IDLE        // Only show custom menu when the machine is idle
@@ -3978,7 +3978,7 @@
   #if ENABLED(HOST_PROMPT_SUPPORT)
     //#define HOST_STATUS_NOTIFICATIONS   // Send some status messages to the host as notifications
   #endif
-  #define HOST_START_MENU_ITEM          // Add a menu item that tells the host to start
+  //#define HOST_START_MENU_ITEM          // Add a menu item that tells the host to start
   //#define HOST_SHUTDOWN_MENU_ITEM       // Add a menu item that tells the host to shut down
 #endif
 
