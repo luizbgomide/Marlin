@@ -71,7 +71,7 @@ void moveAxis(const AxisEnum axis, const int8_t direction) {
     }
   #endif
 
-  const float diff = motionAxisState.currentStepSize * direction;
+  float diff = motionAxisState.currentStepSize * direction;
 
   #if HAS_BED_PROBE
 
@@ -85,6 +85,7 @@ void moveAxis(const AxisEnum axis, const int8_t direction) {
                       , do_probe ? new_probe_offset : hotend_offset[active_extruder].z - bsDiff
                       , new_probe_offset
                     );
+        diff = 0;
         if (WITHIN(new_offs, PROBE_OFFSET_ZMIN, PROBE_OFFSET_ZMAX)) {
           babystep.add_steps(Z_AXIS, babystep_increment);
           if (do_probe)
