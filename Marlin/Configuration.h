@@ -73,7 +73,9 @@
 // @section machine
 
 // Choose the name from boards.h that matches your setup
-#define MOTHERBOARD BOARD_MKS_ROBIN_NANO
+#ifndef MOTHERBOARD
+  #define MOTHERBOARD BOARD_MKS_ROBIN_NANO
+#endif
 
 /**
  * Select the serial port on the board to use for communication with the host.
@@ -153,18 +155,16 @@
  * :['A4988', 'A5984', 'DRV8825', 'LV8729', 'TB6560', 'TB6600', 'TMC2100', 'TMC2130', 'TMC2130_STANDALONE', 'TMC2160', 'TMC2160_STANDALONE', 'TMC2208', 'TMC2208_STANDALONE', 'TMC2209', 'TMC2209_STANDALONE', 'TMC2660', 'TMC2660_STANDALONE', 'TMC5130', 'TMC5130_STANDALONE', 'TMC5160', 'TMC5160_STANDALONE']
  */
 #if ENABLED(BLUER_TMC2209)
-  #define BASE_DRIVER_TYPE TMC2209_STANDALONE
+  #define X_DRIVER_TYPE TMC2209_STANDALONE
+  #define Y_DRIVER_TYPE TMC2209_STANDALONE
+  #define Z_DRIVER_TYPE TMC2209_STANDALONE
 #elif ENABLED(BLUER_TMC2209_UART)
-  #define BASE_DRIVER_TYPE TMC2209
+  #define X_DRIVER_TYPE TMC2209
+  #define Y_DRIVER_TYPE TMC2209
+  #define Z_DRIVER_TYPE TMC2209
 #else
-  #define BASE_DRIVER_TYPE TMC2208_STANDALONE
-#endif
-
-#define X_DRIVER_TYPE BASE_DRIVER_TYPE
-#define Y_DRIVER_TYPE BASE_DRIVER_TYPE
-#if ANY(BLUER_TMC2209,BLUER_TMC2209_UART)
-  #define Z_DRIVER_TYPE BASE_DRIVER_TYPE
-#else
+  #define X_DRIVER_TYPE TMC2208_STANDALONE
+  #define Y_DRIVER_TYPE TMC2208_STANDALONE
   #define Z_DRIVER_TYPE A4988
 #endif
 //#define X2_DRIVER_TYPE A4988
@@ -178,8 +178,10 @@
 //#define U_DRIVER_TYPE  A4988
 //#define V_DRIVER_TYPE  A4988
 //#define W_DRIVER_TYPE  A4988
-#if ANY(BLUER_TMC2209,BLUER_TMC2209_UART)
-  #define E0_DRIVER_TYPE BASE_DRIVER_TYPE
+#if ENABLED(BLUER_TMC2209)
+  #define E0_DRIVER_TYPE TMC2209_STANDALONE
+#elif ENABLED(BLUER_TMC2209_UART)
+  #define E0_DRIVER_TYPE TMC2209
 #else
   #define E0_DRIVER_TYPE A4988
 #endif
@@ -2134,7 +2136,7 @@
 
 #if ANY(MESH_BED_LEVELING, AUTO_BED_LEVELING_UBL, PROBE_MANUALLY)
   // Set a height for the start of manual adjustment
-  #define MANUAL_PROBE_START_Z 0.2  // (mm) Comment out to use the last-measured height
+  //#define MANUAL_PROBE_START_Z 0.2  // (mm) Comment out to use the last-measured height
 #endif
 
 #if ANY(MESH_BED_LEVELING, AUTO_BED_LEVELING_BILINEAR, AUTO_BED_LEVELING_UBL)
@@ -2169,7 +2171,7 @@
   #if ENABLED(G26_MESH_VALIDATION)
     #define MESH_TEST_NOZZLE_SIZE    0.4  // (mm) Diameter of primary nozzle.
     #define MESH_TEST_LAYER_HEIGHT   0.2  // (mm) Default layer height for G26.
-    #define MESH_TEST_HOTEND_TEMP  200    // (°C) Default nozzle temperature for G26.
+    #define MESH_TEST_HOTEND_TEMP  205    // (°C) Default nozzle temperature for G26.
     #define MESH_TEST_BED_TEMP      70    // (°C) Default bed temperature for G26.
     #define G26_XY_FEEDRATE         20    // (mm/s) Feedrate for G26 XY moves.
     #define G26_XY_FEEDRATE_TRAVEL 100    // (mm/s) Feedrate for G26 XY travel moves.
