@@ -685,14 +685,14 @@
   #if ENABLED(PID_PARAMS_PER_HOTEND)
     // Specify up to one value per hotend here, according to your setup.
     // If there are fewer values, the last one applies to the remaining hotends.
-	#define DEFAULT_Kp_LIST {  16.5848,  16.5848 }
-    #define DEFAULT_Ki_LIST {   1.1146,   1.1146 }
-    #define DEFAULT_Kd_LIST { 61.6954, 61.6954 }
+	  #define DEFAULT_Kp_LIST { 13.9201, 13.9201 }
+    #define DEFAULT_Ki_LIST {  0.8169,  0.8169 }
+    #define DEFAULT_Kd_LIST { 59.2995, 59.2995 }
   #else
 	//Bluer
-    #define DEFAULT_Kp 16.5848
-    #define DEFAULT_Ki 1.1146
-    #define DEFAULT_Kd 61.6954
+    #define DEFAULT_Kp 13.9201
+    #define DEFAULT_Ki 0.8169
+    #define DEFAULT_Kd 59.2995
   #endif
 #endif
 
@@ -776,9 +776,9 @@
   // 120V 250W silicone heater into 4mm borosilicate (MendelMax 1.5+)
   // from FOPDT model - kp=.39 Tp=405 Tdead=66, Tc set to 79.2, aggressive factor of .15 (vs .1, 1, 10)
   // Bluer PID Settings
-  #define DEFAULT_bedKp 37.2448
-  #define DEFAULT_bedKi 7.1625
-  #define DEFAULT_bedKd 129.1152
+  #define DEFAULT_bedKp 74.0150
+  #define DEFAULT_bedKi 14.0180
+  #define DEFAULT_bedKd 260.5329
 
   // FIND YOUR OWN: "M303 E-1 C8 S90" to run autotune on the bed at 90 degreesC for 8 cycles.
 #endif // PIDTEMPBED
@@ -1332,7 +1332,7 @@
  *   https://blog.kyneticcnc.com/2018/10/computing-junction-deviation-for-marlin.html
  */
 #if DISABLED(CLASSIC_JERK)
-  #define JUNCTION_DEVIATION_MM 0.03  // (mm) Distance from real junction edge
+  #define JUNCTION_DEVIATION_MM 0.04  // (mm) Distance from real junction edge
   #define JD_HANDLE_SMALL_SEGMENTS    // Use curvature estimation instead of just the junction angle
                                       // for small segments (< 1mm) with large junction angles (> 135°).
 #endif
@@ -1576,7 +1576,7 @@
  *     |    [-]    |
  *     O-- FRONT --+
  */
-#define NOZZLE_TO_PROBE_OFFSET { 43, -4, 0 }
+#define NOZZLE_TO_PROBE_OFFSET { 43, -4, -2.3 }
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
