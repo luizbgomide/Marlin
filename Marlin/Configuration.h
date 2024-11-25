@@ -685,14 +685,14 @@
   #if ENABLED(PID_PARAMS_PER_HOTEND)
     // Specify up to one value per hotend here, according to your setup.
     // If there are fewer values, the last one applies to the remaining hotends.
-	  #define DEFAULT_Kp_LIST { 13.9201, 13.9201 }
-    #define DEFAULT_Ki_LIST {  0.8169,  0.8169 }
-    #define DEFAULT_Kd_LIST { 59.2995, 59.2995 }
+	  #define DEFAULT_Kp_LIST {  9.0105,  9.0105 }
+    #define DEFAULT_Ki_LIST {  0.4037,  0.4037 }
+    #define DEFAULT_Kd_LIST { 50.2788, 50.2788 }
   #else
 	//Bluer
-    #define DEFAULT_Kp 13.9201
-    #define DEFAULT_Ki 0.8169
-    #define DEFAULT_Kd 59.2995
+    #define DEFAULT_Kp 9.0105
+    #define DEFAULT_Ki 0.4037
+    #define DEFAULT_Kd 50.2788
   #endif
 #endif
 
@@ -776,9 +776,9 @@
   // 120V 250W silicone heater into 4mm borosilicate (MendelMax 1.5+)
   // from FOPDT model - kp=.39 Tp=405 Tdead=66, Tc set to 79.2, aggressive factor of .15 (vs .1, 1, 10)
   // Bluer PID Settings
-  #define DEFAULT_bedKp 74.0150
-  #define DEFAULT_bedKi 14.0180
-  #define DEFAULT_bedKd 260.5329
+  #define DEFAULT_bedKp 73.4924
+  #define DEFAULT_bedKi 11.4832
+  #define DEFAULT_bedKd 313.5677
 
   // FIND YOUR OWN: "M303 E-1 C8 S90" to run autotune on the bed at 90 degreesC for 8 cycles.
 #endif // PIDTEMPBED
