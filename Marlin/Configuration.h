@@ -1254,8 +1254,8 @@
  * Override with M92
  *                                      X, Y, Z [, I [, J [, K...]]], E0 [, E1[, E2...]]
  */
-// #define DEFAULT_AXIS_STEPS_PER_UNIT   { 160.6, 160.6, 400, 410 }    //Bluer 2xTMC2225
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 410 }    //Bluer 4xTMC2225
+// #define DEFAULT_AXIS_STEPS_PER_UNIT   { 160.6, 160.6, 400, 400 }    //Bluer 2xTMC2225
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 400 }    //Bluer 4xTMC2225
 
 /**
  * Default Max Feed Rate (linear=mm/s, rotational=°/s)
